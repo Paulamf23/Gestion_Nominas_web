@@ -1,0 +1,78 @@
+<%@ page import="model.Empleado" %>
+<%@ page import="java.util.List" %>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Listar Empleados</title>
+    <style>
+        body {
+            background-color: #f7ecd6; /* Fondo de tono pastel */
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        .menu-container {
+            margin: 100px auto;
+            width: 800px; /* Ancho del menú */
+            background-color: #ffffff; /* Fondo blanco */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .menu-container a, .menu-container a:visited{
+            text-decoration: none;
+            color: #F3C734;
+            font-weight: bold;
+            -webkit-text-stroke-width: 0.2px;
+            -webkit-text-stroke-color: black;
+        }
+
+        h1{
+            font-size: 40px;
+            color: #F3C734;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+        .principal{
+            font-weight: bold;
+        }
+        </style>
+</head>
+<body>
+<div class="menu-container">
+    <h1>Listar Empleados</h1>
+        <table border="1">
+            <tr class="principal">
+                <td>Nombre</td>
+                <td>Dni</td>
+                <td>Sexo</td>
+                <td>Categoria</td>
+                <td>Años</td>
+            </tr>
+            <%
+                List<Empleado> lista = (List<Empleado>) request.getAttribute("lista");
+                for (Empleado empleado : lista) {
+            %>
+                <tr>
+                    <td><%= empleado.getNombre() %></td>
+                    <td><%= empleado.getDni() %></td>
+                    <td><%= empleado.getSexo() %></td>
+                    <td><%= empleado.getCategoria() %></td>
+                    <td><%= empleado.getAnyosTrabajados() %></td>
+                </tr>
+            <% } %>
+        </table>
+    <br>
+    <div class="inicio">
+        <a href="index.jsp">Volver</a>
+    </div>
+
+</div>
+</body>
+</html>
